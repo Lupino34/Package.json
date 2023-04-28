@@ -47,5 +47,15 @@ const fs = require('fs')
 // Для созданния папки используем функцию mkdir(mkdirSync - синхронная функция, )
 // fs.mkdirSync('text-files')
 // fs.mkdir('text-files', () => {
-//     fs.writeFile('./text-files/some.txt', 'Hello Lupino', () => {})
+//     fs.writeFile('./text-files/some.txt', 'Hello Lupino', () => {})  //--colback функция
 // })
+
+//                  --Удаление папок--
+// --Для удаления папки сначало нужно удалить ее содержимое!!!
+// --для удаления содержимого в папке используется функция "unlink, unlinkSync"
+// --Для удаление папки используется функция "rmdir, rmdirSync"
+// -Для начала удаляем содержимое в папке, затем саму папку:
+fs.unlink('./text-files/some.txt', () => {
+    fs.rmdir('./text-files', () => {}) // -- Важно после функции прописывать colback функцию "() => {}"
+
+})
